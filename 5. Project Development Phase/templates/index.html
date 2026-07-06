@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiCrop | Smart Crop Recommendation</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="overlay">
+
+        <div class="container">
+
+            <h1>🌱 OptiCrop</h1>
+
+            <p class="subtitle">
+                Smart Crop Recommendation System
+            </p>
+
+            <form action="/predict" method="POST">
+
+                <div class="input-group">
+                    <label>Nitrogen (N)</label>
+                    <input type="number" name="N" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Phosphorus (P)</label>
+                    <input type="number" name="P" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Potassium (K)</label>
+                    <input type="number" name="K" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Temperature (°C)</label>
+                    <input type="number" step="any" name="temperature" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Humidity (%)</label>
+                    <input type="number" step="any" name="humidity" required>
+                </div>
+
+                <div class="input-group">
+                    <label>pH Value</label>
+                    <input type="number" step="any" name="ph" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Rainfall (mm)</label>
+                    <input type="number" step="any" name="rainfall" required>
+                </div>
+
+                <button type="submit">
+                    🌿 Predict Crop
+                </button>
+
+            </form>
+
+            {% if prediction %}
+
+            <div class="result">
+
+                <h2>🌾 Recommended Crop</h2>
+
+                <h3>{{ prediction }}</h3>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
